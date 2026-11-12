@@ -1,0 +1,30 @@
+project:
+  name: "Reachability-Guided Patch Engine"
+  version: "0.1.0"
+
+ingestion:
+  osv_api_url: "https://api.osv.dev/v1/query"
+  supported_ecosystems:
+    - "PyPI"
+    - "Maven"
+
+
+reachability:
+  max_call_depth: 10
+  languages:
+    - "python"
+    - "java"
+
+synthesizer:
+  model: "gemini-2.5-flash"
+  temperature: 0.1
+  max_tokens: 2048
+  max_retries: 3
+
+
+sandbox:
+  python_image: "reachability-python-sandbox:latest"
+  java_image: "reachability-java-sandbox:latest"
+  container_timeout_sec: 120
+  memory_limit: "2g"
+  network_disabled: true

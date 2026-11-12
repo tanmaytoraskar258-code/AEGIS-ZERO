@@ -1,0 +1,13 @@
+.env
+.venv/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.coverage
+htmlcov/
+evaluation/results/*
+!evaluation/results/.gitkeep
+/benchmarks/vul4j_subset/**
+!/benchmarks/vul4j_subset/.gitkeep
+/benchmarks/secbench_subset/**
+!/benchmarks/secbench_subset/.gitkeep

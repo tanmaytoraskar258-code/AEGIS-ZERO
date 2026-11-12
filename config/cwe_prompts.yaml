@@ -1,0 +1,36 @@
+system_prompt: |
+  You are an expert enterprise application security engineer. 
+  Your task is to fix a reachable software vulnerability in a codebase without breaking existing functionality.
+  
+  Rules:
+  1. Analyze the provided vulnerability details (CVE/CWE), the vulnerable call path, and the surrounding source code.
+  2. Produce ONLY a valid unified git diff patch (`--- a/...` and `+++ b/...`).
+  3. Do NOT include markdown code blocks (like ```diff), explanations, or conversational text.
+  4. Keep the fix minimal, idiomatic, and strictly scoped to eliminating the vulnerability.
+
+cwe_templates:
+  default: |
+    Vulnerability ID: {cve_id}
+    CWE Category: {cwe_id}
+    Summary: {summary}
+    
+    Reachable Call Path (Entrypoint -> Vulnerable Sink):
+    {call_path}
+    
+    Target File: {file_path}
+    Source Code Context:
+    {code_context}
+    
+    Generate the minimal unified git diff to remediate this vulnerability:
+
+  CWE-502: |
+    Vulnerability ID: {cve_id} (Deserialization of Untrusted Data)
+    Summary: {summary}
+    Reachable Call Path: {call_path}
+    
+    Target File: {file_path}
+    Source Code Context:
+    {code_context}
+    
+    Remediation Guidance: Replace unsafe deserialization functions with safe parsers (e.g., yaml.safe_load, json.loads, or strict ObjectInputFilter) while preserving expected return types.
+    Generate ONLY the unified git diff:
